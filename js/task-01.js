@@ -1,15 +1,18 @@
-const num = document.querySelectorAll('.item').length;
-console.log("Number of categories:", num);
+const categories = document.querySelectorAll('.item');
+console.log("Number of categories:", categories.length);
 
-// const title = document.querySelector("h2");
-// console.log("Category:",title.innerHTML);
 
-// var elem = document.querySelectorAll('item').length;
-// console.log("Elements:", elem);
 
-const ul = Array.from(document.querySelector('#categories').children);
-for (let elem of ul) {
-    let category = elem.firstElementChild.textContent;   
-    let quantityElem = elem.lastElementChild.children.length;
-    console.log(`Category: ${category} \nElements: ${quantityElem}`);
-};
+// const ul = Array.from(document.querySelector('#categories').children);
+// for (let elem of ul) {
+//     let category = elem.firstElementChild.textContent;
+//     let quantityElem = elem.lastElementChild.children.length;
+//     console.log(`Category: ${category} \nElements: ${quantityElem}`);
+// };
+
+const categoryList = [...categories].map(category =>
+`Category: ${category.children[0].textContent}
+ Elements: ${category.children[1].children.length}`
+  )
+  .join("\n");
+console.log(categoryList);
